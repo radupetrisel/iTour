@@ -29,7 +29,6 @@ struct DestinationListingView: View {
     }
     
     init(sort: SortDescriptor<Destination>, filterString: String) {
-        let now = Date.now
         _destinations = Query(filter: #Predicate {
             if filterString.isEmpty {
                 true

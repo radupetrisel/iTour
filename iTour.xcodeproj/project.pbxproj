@@ -14,6 +14,7 @@
 		7C8943FE2ADDB2A800D2CC67 /* Destination.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7C8943FD2ADDB2A800D2CC67 /* Destination.swift */; };
 		7CABA5872ADE7699008E2ED3 /* EditDestinationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CABA5862ADE7698008E2ED3 /* EditDestinationView.swift */; };
 		7CABA5892ADED432008E2ED3 /* DestinationListingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CABA5882ADED432008E2ED3 /* DestinationListingView.swift */; };
+		7CABA58B2ADEF29D008E2ED3 /* Sight.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7CABA58A2ADEF29D008E2ED3 /* Sight.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		7C8943FD2ADDB2A800D2CC67 /* Destination.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Destination.swift; sourceTree = "<group>"; };
 		7CABA5862ADE7698008E2ED3 /* EditDestinationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditDestinationView.swift; sourceTree = "<group>"; };
 		7CABA5882ADED432008E2ED3 /* DestinationListingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DestinationListingView.swift; sourceTree = "<group>"; };
+		7CABA58A2ADEF29D008E2ED3 /* Sight.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sight.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				7C8943F52ADDB19E00D2CC67 /* Preview Content */,
 				7C8943FD2ADDB2A800D2CC67 /* Destination.swift */,
 				7CABA5882ADED432008E2ED3 /* DestinationListingView.swift */,
+				7CABA58A2ADEF29D008E2ED3 /* Sight.swift */,
 			);
 			path = iTour;
 			sourceTree = "<group>";
@@ -149,6 +152,7 @@
 				7C8943F22ADDB19C00D2CC67 /* ContentView.swift in Sources */,
 				7C8943F02ADDB19C00D2CC67 /* iTourApp.swift in Sources */,
 				7C8943FE2ADDB2A800D2CC67 /* Destination.swift in Sources */,
+				7CABA58B2ADEF29D008E2ED3 /* Sight.swift in Sources */,
 				7CABA5872ADE7699008E2ED3 /* EditDestinationView.swift in Sources */,
 				7CABA5892ADED432008E2ED3 /* DestinationListingView.swift in Sources */,
 			);
