@@ -28,7 +28,7 @@ struct DestinationListingView: View {
         }
     }
     
-    init(sort: SortDescriptor<Destination>, filterString: String) {
+    init(sort: [SortDescriptor<Destination>], filterString: String) {
         _destinations = Query(filter: #Predicate {
             if filterString.isEmpty {
                 true
@@ -36,7 +36,7 @@ struct DestinationListingView: View {
             else {
                 $0.name.localizedStandardContains(filterString)
             }
-        }, sort: [sort])
+        }, sort: sort)
     }
     
     private func deleteDestination(_ indexSet: IndexSet) {
@@ -48,5 +48,5 @@ struct DestinationListingView: View {
 }
 
 #Preview {
-    DestinationListingView(sort: SortDescriptor(\.name), filterString: "")
+    DestinationListingView(sort: [SortDescriptor(\.name)], filterString: "")
 }
