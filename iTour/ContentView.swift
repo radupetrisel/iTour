@@ -10,29 +10,31 @@ import SwiftUI
 
 struct ContentView: View {
     @Environment(\.modelContext) private var modelContext
-    @Query private var destinations: [Destination]
     @State private var path = [Destination]()
+    @State private var sortDescriptor = SortDescriptor(\Destination.name)
     
     var body: some View {
         NavigationStack(path: $path) {
-            List {
-                ForEach(destinations) { destination in
-                    NavigationLink(value: destination) {
-                        VStack(alignment: .leading) {
-                            Text(destination.name)
-                                .font(.headline)
+            DestinationListingView(sort: sortDescriptor)
+                .navigationTitle("iTour")
+                .navigationDestination(for: Destination.self, destination: EditDestinationView.init(destination:))
+                .toolbar {
+                    Button("Add", systemImage: "plus", action: addDestination)
+                    
+                    Menu("Sort", systemImage: "arrow.up.arrow.down") {
+                        Picker("Sort", selection: $sortDescriptor) {
+                            Text("Name")
+                                .tag(SortDescriptor(\Destination.name))
                             
-                            Text(destination.date.formatted(date: .long, time: .shortened))
+                            Text("Priority")
+                                .tag(SortDescriptor(\Destination.priority, order: .reverse))
+                            
+                            Text("Date")
+                                .tag(SortDescriptor(\Destination.date))
                         }
+                        .pickerStyle(.inline)
                     }
                 }
-                .onDelete(perform: deleteDestination(_:))
-            }
-            .navigationTitle("iTour")
-            .navigationDestination(for: Destination.self, destination: EditDestinationView.init(destination:))
-            .toolbar {
-                Button("Add", systemImage: "plus", action: addDestination)
-            }
         }
     }
     
@@ -41,13 +43,6 @@ struct ContentView: View {
         modelContext.insert(destination)
         
         path = [destination]
-    }
-    
-    private func deleteDestination(_ indexSet: IndexSet) {
-        for index in indexSet {
-            let destination = destinations[index]
-            modelContext.delete(destination)
-        }
     }
 }
 
