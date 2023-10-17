@@ -13,6 +13,7 @@ struct ContentView: View {
     @State private var path = [Destination]()
     @State private var sortDescriptor = SortDescriptor(\Destination.name)
     @State private var searchString = ""
+    @State private var showAll = true
     
     private var sort: [SortDescriptor<Destination>] {
         [
@@ -21,9 +22,21 @@ struct ContentView: View {
         ]
     }
     
+    private var filter: Predicate<Destination> {
+        let now = Date.now
+        return #Predicate<Destination> {
+            if searchString.isEmpty {
+                showAll || $0.date > now
+            }
+            else {
+                (showAll || $0.date > now) && $0.name.localizedStandardContains(searchString)
+            }
+        }
+    }
+        
     var body: some View {
         NavigationStack(path: $path) {
-            DestinationListingView(sort: sort, filterString: searchString)
+            DestinationListingView(sort: sort, filter: filter)
                 .navigationTitle("iTour")
                 .navigationDestination(for: Destination.self, destination: EditDestinationView.init(destination:))
                 .searchable(text: $searchString)
@@ -42,6 +55,16 @@ struct ContentView: View {
                                 .tag(SortDescriptor(\Destination.date))
                         }
                         .pickerStyle(.inline)
+                    }
+                    
+                    Menu("Filter future", systemImage: "line.3.horizontal.decrease.circle") {
+                        Picker("Filter future", selection: $showAll) {
+                            Text("All")
+                                .tag(true)
+                            
+                            Text("Future only")
+                                .tag(false)
+                        }
                     }
                 }
         }
